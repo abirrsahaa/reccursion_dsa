@@ -1,6 +1,6 @@
 // // concept--> INCLUSION AND EXCLUSION
 
-// // PRINTING THE SUBSEQUENCES-->
+// PRINTING THE SUBSEQUENCES-->
 
 // #include <iostream>
 // #include <vector>
