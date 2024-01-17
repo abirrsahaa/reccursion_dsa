@@ -28,7 +28,7 @@ void get(string input, vector<string> &output, vector<string> f, int index, stri
 }
 int main()
 {
-    string input = "23";
+    string input = "235";
     vector<string> output;
     string getting = "";
     vector<string> f(10);

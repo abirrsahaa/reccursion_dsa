@@ -168,137 +168,137 @@
 // the maze that is provided
 //  int maze[4][4] = {{1, 0, 0, 0}, {1, 1, 0, 1}, {1, 1, 0, 0}, {0, 1, 1, 1}};
 
-#include <iostream>
-#include <vector>
-using namespace std;
+// #include <iostream>
+// #include <vector>
+// using namespace std;
 
-bool isSafe(int srcx, int srcy, int row, int col, vector<vector<bool>> &visited, int maze[4][4])
-{
-    // safe kokhon hoibo
-    // jokhon obviously maze r modhey ghor ta
-    // oidate age gese na
-    // and maze r modhey 1 ase jayoner liga
-    if ((srcx >= 0 && srcx < row) && (srcy >= 0 && srcy < col))
-    {
-        if (visited[srcx][srcy] == false && maze[srcx][srcy] == 1)
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
-    }
-    return false;
-}
+// bool isSafe(int srcx, int srcy, int row, int col, vector<vector<bool>> &visited, int maze[4][4])
+// {
+//     // safe kokhon hoibo
+//     // jokhon obviously maze r modhey ghor ta
+//     // oidate age gese na
+//     // and maze r modhey 1 ase jayoner liga
+//     if ((srcx >= 0 && srcx < row) && (srcy >= 0 && srcy < col))
+//     {
+//         if (visited[srcx][srcy] == false && maze[srcx][srcy] == 1)
+//         {
+//             return true;
+//         }
+//         else
+//         {
+//             return false;
+//         }
+//     }
+//     return false;
+// }
 
-void getting(int srcx, int srcy, int row, int col, vector<vector<bool>> &visited, int maze[4][4], vector<string> &ans, string &output)
-{
-    // base case
-    // base case tokhon e hoibo jokhon destination e poicha jamu
-    if (srcx == row - 1 && srcy == col - 1)
-    {
-        ans.push_back(output);
-        return;
-    }
+// void getting(int srcx, int srcy, int row, int col, vector<vector<bool>> &visited, int maze[4][4], vector<string> &ans, string &output)
+// {
+//     // base case
+//     // base case tokhon e hoibo jokhon destination e poicha jamu
+//     if (srcx == row - 1 && srcy == col - 1)
+//     {
+//         ans.push_back(output);
+//         return;
+//     }
 
-    // akhon akta case shob direction er liga solve koira dou
-    // baki toh reccursion kakku ase oi dekhon r liga
+//     // akhon akta case shob direction er liga solve koira dou
+//     // baki toh reccursion kakku ase oi dekhon r liga
 
-    // upore jayoner liga
-    // row paltaibo column na
-    // srcx-1
+//     // upore jayoner liga
+//     // row paltaibo column na
+//     // srcx-1
 
-    if (isSafe(srcx - 1, srcy, row, col, visited, maze))
-    {
-        output.push_back('u');
-        // call with srcx+1
-        visited[srcx - 1][srcy] = true;
-        getting(srcx - 1, srcy, row, col, visited, maze, ans, output);
-        // hoiya gese ak case tar mane na hoile firot aibo tahole backtrack lagbo
-        output.pop_back();
-        visited[srcx - 1][srcy] = false;
-    }
+//     if (isSafe(srcx - 1, srcy, row, col, visited, maze))
+//     {
+//         output.push_back('u');
+//         // call with srcx+1
+//         visited[srcx - 1][srcy] = true;
+//         getting(srcx - 1, srcy, row, col, visited, maze, ans, output);
+//         // hoiya gese ak case tar mane na hoile firot aibo tahole backtrack lagbo
+//         output.pop_back();
+//         visited[srcx - 1][srcy] = false;
+//     }
 
-    // left jayoner liga
-    // column paltaibo row na
-    // srcy-1
+//     // left jayoner liga
+//     // column paltaibo row na
+//     // srcy-1
 
-    if (isSafe(srcx, srcy - 1, row, col, visited, maze))
-    {
-        output.push_back('l');
-        // call with srcx+1
-        visited[srcx][srcy - 1] = true;
-        getting(srcx, srcy - 1, row, col, visited, maze, ans, output);
-        // hoiya gese ak case tar mane na hoile firot aibo tahole backtrack lagbo
-        output.pop_back();
-        visited[srcx][srcy - 1] = false;
-    }
+//     if (isSafe(srcx, srcy - 1, row, col, visited, maze))
+//     {
+//         output.push_back('l');
+//         // call with srcx+1
+//         visited[srcx][srcy - 1] = true;
+//         getting(srcx, srcy - 1, row, col, visited, maze, ans, output);
+//         // hoiya gese ak case tar mane na hoile firot aibo tahole backtrack lagbo
+//         output.pop_back();
+//         visited[srcx][srcy - 1] = false;
+//     }
 
-    // niche jayoner liga
-    // row paltaibo column na
-    // srcx+1
+//     // niche jayoner liga
+//     // row paltaibo column na
+//     // srcx+1
 
-    if (isSafe(srcx + 1, srcy, row, col, visited, maze))
-    {
-        output.push_back('d');
-        // call with srcx+1
-        visited[srcx + 1][srcy] = true;
-        getting(srcx + 1, srcy, row, col, visited, maze, ans, output);
-        // hoiya gese ak case tar mane na hoile firot aibo tahole backtrack lagbo
-        output.pop_back();
-        visited[srcx + 1][srcy] = false;
-    }
+//     if (isSafe(srcx + 1, srcy, row, col, visited, maze))
+//     {
+//         output.push_back('d');
+//         // call with srcx+1
+//         visited[srcx + 1][srcy] = true;
+//         getting(srcx + 1, srcy, row, col, visited, maze, ans, output);
+//         // hoiya gese ak case tar mane na hoile firot aibo tahole backtrack lagbo
+//         output.pop_back();
+//         visited[srcx + 1][srcy] = false;
+//     }
 
-    // right jayoner liga
-    // col paltaibo row na
-    // srcy+1
+//     // right jayoner liga
+//     // col paltaibo row na
+//     // srcy+1
 
-    if (isSafe(srcx, srcy + 1, row, col, visited, maze))
-    {
-        output.push_back('r');
-        // call with srcx+1
-        visited[srcx][srcy + 1] = true;
-        getting(srcx, srcy + 1, row, col, visited, maze, ans, output);
-        // hoiya gese ak case tar mane na hoile firot aibo tahole backtrack lagbo
-        output.pop_back();
-        visited[srcx][srcy + 1] = false;
-    }
-}
-int main()
-{
-    // cholo ja amrare deyoner tara diya laise akhon ida diya ja kheloner khelte lagbo
-    int maze[4][4] = {{1, 0, 0, 0}, {1, 1, 0, 1}, {1, 1, 0, 0}, {0, 1, 1, 1}};
-    int row = 4;
-    int col = 4;
-    int srcx = 0;
-    int srcy = 0;
-    // akhon dekh ami ida bujhum kemne ami already oi jagat gesi ni
-    // karon jodi na giya thaki tahole toh jaite parum
-    // but giya thakle toh jaite partam na
-    // toh akta kaj kori same ditto arekta boolean matrix banai and shobdi re false banai rakhi
-    // karon akhono kunodate gesi na except the first one
-    // arr jodi indur ta re pathai oi oi ghore tahole oi dare true koira dimu jodi
-    // ha oi rasta da re r na choose kore
-    // arr backtrack r khetre mone rakhis
-    // jokhon firot aisos mane kita rasta da re bair korsos toh thik oi
-    // but oi rasta da jen gesos na oi dare false korte bhuklis na kintu
-    vector<vector<bool>> visited(row, vector<bool>(col, false));
-    if (maze[0][0] == 0)
-    {
-        return 0;
-    }
+//     if (isSafe(srcx, srcy + 1, row, col, visited, maze))
+//     {
+//         output.push_back('r');
+//         // call with srcx+1
+//         visited[srcx][srcy + 1] = true;
+//         getting(srcx, srcy + 1, row, col, visited, maze, ans, output);
+//         // hoiya gese ak case tar mane na hoile firot aibo tahole backtrack lagbo
+//         output.pop_back();
+//         visited[srcx][srcy + 1] = false;
+//     }
+// }
+// int main()
+// {
+//     // cholo ja amrare deyoner tara diya laise akhon ida diya ja kheloner khelte lagbo
+//     int maze[4][4] = {{1, 0, 0, 0}, {1, 1, 0, 1}, {1, 1, 0, 0}, {0, 1, 1, 1}};
+//     int row = 4;
+//     int col = 4;
+//     int srcx = 0;
+//     int srcy = 0;
+//     // akhon dekh ami ida bujhum kemne ami already oi jagat gesi ni
+//     // karon jodi na giya thaki tahole toh jaite parum
+//     // but giya thakle toh jaite partam na
+//     // toh akta kaj kori same ditto arekta boolean matrix banai and shobdi re false banai rakhi
+//     // karon akhono kunodate gesi na except the first one
+//     // arr jodi indur ta re pathai oi oi ghore tahole oi dare true koira dimu jodi
+//     // ha oi rasta da re r na choose kore
+//     // arr backtrack r khetre mone rakhis
+//     // jokhon firot aisos mane kita rasta da re bair korsos toh thik oi
+//     // but oi rasta da jen gesos na oi dare false korte bhuklis na kintu
+//     vector<vector<bool>> visited(row, vector<bool>(col, false));
+//     if (maze[0][0] == 0)
+//     {
+//         return 0;
+//     }
 
-    visited[0][0] = true;
-    vector<string> ans;
-    string output = "";
-    getting(srcx, srcy, row, col, visited, maze, ans, output);
-    // for (auto i : ans)
-    // {
-    //     cout << i << " ";
-    // }
-    for (int i = 0; i < ans.size(); i++)
-    {
-        cout << ans[i] << " ";
-    }
-}
+//     visited[0][0] = true;
+//     vector<string> ans;
+//     string output = "";
+//     getting(srcx, srcy, row, col, visited, maze, ans, output);
+//     // for (auto i : ans)
+//     // {
+//     //     cout << i << " ";
+//     // }
+//     for (int i = 0; i < ans.size(); i++)
+//     {
+//         cout << ans[i] << " ";
+//     }
+// }
